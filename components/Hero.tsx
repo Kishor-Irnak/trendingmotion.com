@@ -6,9 +6,8 @@ import { ConnectionGraphic } from "./ui/connection-graphic";
 const Hero: React.FC = () => {
   return (
     <section className="relative pt-28 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-      {/* Background Glow Effects specific to Hero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] z-0 pointer-events-none">
-        <div className="w-full h-full bg-hero-glow origin-top" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] z-0 pointer-events-none opacity-20">
+        <div className="w-full h-full bg-indigo-900/10 blur-[100px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
@@ -24,7 +23,7 @@ const Hero: React.FC = () => {
 
         {/* Main Heading */}
         <BlurReveal delay={0.2}>
-          <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 leading-[1.1]">
             <span className="animate-shine bg-[linear-gradient(to_right,#818cf8,#c084fc,#ffffff,#c084fc,#818cf8)] bg-size-[200%_auto] bg-clip-text text-transparent">
               Trending Motion
             </span>{" "}
@@ -35,7 +34,7 @@ const Hero: React.FC = () => {
 
         {/* Subheading */}
         <BlurReveal delay={0.3}>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
             TrendingMotion helps your brand grow with smart SEO, social media,
             and clean web design. We don’t just bring traffic — we turn visitors
             into loyal customers.

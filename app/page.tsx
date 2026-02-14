@@ -9,14 +9,12 @@ import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#05050A] text-slate-200 overflow-x-hidden selection:bg-indigo-500/30">
-      {/* Global ambient background glow */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-900/20 blur-[120px] rounded-full mix-blend-screen" />
-      </div>
+    <div className="min-h-screen text-slate-200 overflow-x-hidden selection:bg-indigo-500/30">
+      <AuroraBackground />
 
       <div className="relative z-10">
         <Navbar />
