@@ -1,9 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: "export",
   basePath: "/trendingmotion.com",
-  assetPrefix: "/trendingmotion.com/",
   images: {
     unoptimized: true,
   },
