@@ -8,8 +8,7 @@ import {
   BarChart3,
   TrendingUp,
   Zap,
-  Users,
-  MousePointer2,
+  Code2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { BlurReveal } from "./ui/blur-reveal";
@@ -20,17 +19,15 @@ const Features: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <BlurReveal className="mb-16 md:text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            Why Choose Us
+            Our Expertise
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Why Choose TrendingMotion? <br />
-            <span className="text-slate-400 text-2xl md:text-3xl">
-              The Agency That Moves at the Speed of Trends
-            </span>
+            Think less about the tool. <br />
+            <span className="text-slate-400">Focus on the growth.</span>
           </h2>
           <p className="text-slate-400 text-lg">
-            We combine creative excellence with technical precision to deliver
-            results that actually matter to your bottom line.
+            The all-in-one agency toolkit to keep your brand organized,
+            efficient, and connected to your audience.
           </p>
         </BlurReveal>
 
@@ -45,24 +42,25 @@ const Features: React.FC = () => {
 
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-black transition-all duration-500 shadow-[0_0_20px_-5px_rgba(99,102,241,0.3)]">
-                    <Zap size={28} />
+                  <div className="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 group-hover:bg-green-500 group-hover:text-black transition-all duration-500 shadow-[0_0_20px_-5px_rgba(34,197,94,0.3)]">
+                    <Megaphone size={28} />
                   </div>
-                  <div className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold text-indigo-400 uppercase tracking-widest animate-pulse">
-                    Main Edge
+                  <div className="px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-[10px] font-bold text-green-400 uppercase tracking-widest">
+                    CORE POWER
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  Trend-Centric Content
+                <h3 className="text-2xl md:text-4xl font-bold text-white mb-3">
+                  Digital Marketing
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                  In a world of scrolling, we specialize in{" "}
-                  <span className="text-indigo-400 font-medium">
-                    Motion Graphics and Short-form Video
-                  </span>{" "}
-                  that captures attention in the first 3 seconds and keeps your
-                  brand relevant.
+                  The engine of your growth. We specialize in aggressive scaling
+                  through{" "}
+                  <span className="text-green-400 font-medium">
+                    high-ROI paid advertising
+                  </span>
+                  , strategic content funnels, and precision-targeted social
+                  dominance.
                 </p>
 
                 {/* Advanced Performance Visual */}
@@ -257,19 +255,18 @@ const Features: React.FC = () => {
 
           {/* Card 2: Brand Identity (Top Center) */}
           <BlurReveal delay={0.2}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-blue-500/30">
-              <div className="absolute inset-0 bg-linear-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-pink-500/30">
+              <div className="absolute inset-0 bg-linear-to-tr from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
-                  <BarChart3 size={24} />
+                <div className="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 mb-6 group-hover:scale-110 transition-transform">
+                  <Palette size={24} />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">
-                  Data-Driven Decision Making
+                  Brand Identity
                 </h3>
                 <p className="text-slate-400 text-sm">
-                  We don't guess; we test. Every campaign is backed by
-                  competitor analysis and real-time data to ensure your
-                  marketing budget is spent effectively.
+                  Memorable visual identities that resonate with your audience.
+                  Logos, style guides, and positioning.
                 </p>
               </div>
             </div>
@@ -281,15 +278,14 @@ const Features: React.FC = () => {
               <div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
-                  <Users size={24} />
+                  <BarChart3 size={24} />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">
-                  Expert Team & Tech
+                  SEO & Analytics
                 </h3>
                 <p className="text-slate-400 text-sm">
-                  Access a team of SEO specialists, creative designers, and ad
-                  copywriters who stay updated on the latest algorithm changes
-                  so you don't have to.
+                  Data-driven decisions to maximize your organic reach and
+                  ensure positive ROI on every move.
                 </p>
               </div>
             </div>
@@ -297,55 +293,47 @@ const Features: React.FC = () => {
 
           {/* Card 4: Web Development (Large bottom horizontal) */}
           <BlurReveal className="md:col-span-2" delay={0.4}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-green-500/30">
-              <div className="absolute -right-20 -top-20 w-64 h-64 bg-green-500/10 blur-[80px] rounded-full group-hover:bg-green-500/20 transition-all" />
+            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-blue-500/30">
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/20 blur-[80px] rounded-full group-hover:bg-indigo-600/30 transition-all" />
 
               <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center h-full">
                 <div className="flex-1">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium mb-4">
-                    <TrendingUp size={12} /> Scalability
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-medium mb-4">
+                    <Code2 size={12} /> Development
                   </div>
                   <h3 className="text-2xl font-semibold text-white mb-2">
-                    Scalable Growth Plans
+                    Web Development
                   </h3>
                   <p className="text-slate-400 text-sm">
-                    Whether you are a local startup or an international brand,
-                    our services scale with your revenue. We offer Flexible
-                    Digital Marketing Packages tailored to your specific
-                    industry needs.
+                    High-performance websites built with React, Next.js, and
+                    modern tech stacks. Fast, secure, and conversion-ready.
                   </p>
-                  <button className="mt-6 flex items-center gap-2 text-sm font-medium text-green-400 hover:text-green-300 transition-colors">
-                    View Package Options <ArrowUpRight size={14} />
+                  <button className="mt-6 flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
+                    Explore Our Stack <ArrowUpRight size={14} />
                   </button>
                 </div>
 
-                {/* Growth Visual */}
-                <div className="flex-1 w-full flex items-center justify-center">
-                  <div className="relative w-full max-w-[280px] aspect-square flex items-center justify-center">
-                    <div className="absolute inset-0 bg-green-500/5 rounded-full animate-pulse" />
-                    <div className="relative flex flex-col items-center">
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.1, 1],
-                          rotate: [0, 5, -5, 0],
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="w-24 h-24 rounded-3xl bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-400 mb-4 shadow-[0_0_30px_-5px_rgba(34,197,94,0.4)]"
-                      >
-                        <TrendingUp size={40} />
-                      </motion.div>
-                      <div className="text-center">
-                        <p className="text-2xl font-bold text-white mb-1">
-                          UNLIMITED
-                        </p>
-                        <p className="text-[10px] text-slate-500 font-bold tracking-widest uppercase">
-                          Growth Potential
-                        </p>
-                      </div>
+                {/* Code Snippet Visual */}
+                <div className="flex-1 w-full">
+                  <div className="rounded-xl bg-[#0B0C15] border border-white/10 p-4 font-mono text-xs text-slate-400 shadow-lg transform group-hover:translate-y-1 transition-transform">
+                    <div className="flex gap-1.5 mb-3">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+                    </div>
+                    <div className="space-y-1">
+                      <p>
+                        <span className="text-purple-400">const</span>{" "}
+                        <span className="text-blue-400">Project</span> ={" "}
+                        <span className="text-yellow-400">()</span>{" "}
+                        <span className="text-purple-400">=&gt;</span> {"{"}
+                      </p>
+                      <p className="pl-4">
+                        <span className="text-purple-400">return</span> (
+                      </p>
+                      <p className="pl-8 text-green-400">&lt;Success /&gt;</p>
+                      <p className="pl-4">);</p>
+                      <p>{"}"}</p>
                     </div>
                   </div>
                 </div>

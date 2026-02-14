@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Navbar: React.FC = () => {
@@ -37,25 +37,23 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-            <img
-              src="https://i.postimg.cc/GhWnSTSq/favicon.png"
-              alt="TrendingMotion Logo"
-              className="w-8 h-8 object-contain"
-            />
-            <span className="font-semibold text-xl tracking-tight text-white">
+          <div className="shrink-0 flex items-center gap-2 cursor-pointer group">
+            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-[0_0_15px_-3px_rgba(99,102,241,0.5)] group-hover:scale-110 transition-transform">
+              <Zap className="text-white fill-white/20" size={22} />
+            </div>
+            <span className="font-bold text-2xl tracking-tight text-white">
               TrendingMotion
             </span>
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-1">
-            <div className="bg-white/5 rounded-full px-2 py-1 border border-white/5 backdrop-blur-sm">
+            <div className="bg-[#0A0A0F]/60 backdrop-blur-md rounded-full px-1.5 py-1.5 border border-white/5 shadow-2xl">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="px-5 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-full hover:bg-white/5 inline-block"
+                  className="px-5 py-2 text-sm font-medium text-slate-300 hover:text-white transition-all rounded-full hover:bg-white/5 inline-block"
                 >
                   {link.name}
                 </a>
@@ -65,7 +63,7 @@ const Navbar: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <button className="px-6 py-2.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-full transition-all duration-200 shadow-[0_0_20px_-5px_rgba(79,70,229,0.5)] border border-indigo-500/50">
+            <button className="px-8 py-3 text-sm font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] rounded-full transition-all duration-300 shadow-[0_0_20px_-5px_rgba(124,58,237,0.5)] border border-white/10 active:scale-95">
               Get Started
             </button>
           </div>
