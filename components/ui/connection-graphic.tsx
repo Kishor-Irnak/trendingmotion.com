@@ -9,6 +9,7 @@ import {
   useMotionValue,
 } from "framer-motion";
 import { Palette, Megaphone, Code2, BarChart3, Target } from "lucide-react";
+import { useEffect, useState as useReactState } from "react";
 
 const NODE_DATA = [
   {
@@ -55,7 +56,21 @@ const NODE_DATA = [
 
 export const ConnectionGraphic = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useReactState(false);
+  const [windowWidth, setWindowWidth] = useReactState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+  const isSmallMobile = windowWidth < 480;
+
+  // Scale coordinates for mobile
+  const scale = isSmallMobile ? 0.42 : isMobile ? 0.55 : 1;
 
   // Mouse Position Motion Values
   const mouseX = useMotionValue(0);
@@ -88,12 +103,16 @@ export const ConnectionGraphic = () => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-5xl mx-auto py-12 overflow-visible cursor-default"
+      className={`relative w-full max-w-5xl mx-auto ${isMobile ? "py-4" : "py-12"} overflow-visible cursor-default`}
     >
       {/* Background Glow - Static */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isMobile ? "w-[300px] h-[300px]" : "w-[600px] h-[600px]"} bg-indigo-500/5 blur-[80px] rounded-full pointer-events-none`}
+      />
 
-      <div className="relative h-[500px] flex items-center justify-center">
+      <div
+        className={`${isMobile ? "h-[350px]" : "h-[500px]"} relative flex items-center justify-center`}
+      >
         {/* Central Hub - Static Position (with its own slow breathing animation) */}
         <motion.div
           animate={{
@@ -107,7 +126,7 @@ export const ConnectionGraphic = () => {
           className="relative z-20 group"
         >
           <div className="absolute inset-0 bg-indigo-500/20 blur-2xl rounded-3xl group-hover:bg-indigo-500/30 transition-all duration-500" />
-          <div className="relative w-24 h-24 md:w-32 md:h-32 bg-[#0F101E] border border-white/10 rounded-3xl flex items-center justify-center p-6 shadow-2xl backdrop-blur-xl group-hover:border-indigo-500/40 transition-colors">
+          <div className="relative w-16 h-16 md:w-32 md:h-32 bg-[#0F101E] border border-white/10 rounded-2xl md:rounded-3xl flex items-center justify-center p-3 md:p-6 shadow-2xl backdrop-blur-xl group-hover:border-indigo-500/40 transition-colors">
             <img
               src="https://i.postimg.cc/GhWnSTSq/favicon.png"
               alt="Logo"
@@ -145,11 +164,13 @@ export const ConnectionGraphic = () => {
                   // We map the mouse position to the line's endpoint
                   x2={useTransform(
                     smoothMouseX,
-                    (val) => `calc(50% + ${node.x + val * factorX}px)`,
+                    (val) =>
+                      `calc(50% + ${node.x * scale + val * factorX * scale}px)`,
                   )}
                   y2={useTransform(
                     smoothMouseY,
-                    (val) => `calc(50% + ${node.y + val * factorY}px)`,
+                    (val) =>
+                      `calc(50% + ${node.y * scale + val * factorY * scale}px)`,
                   )}
                   stroke="rgba(99, 102, 241, 0.15)"
                   strokeWidth="1.5"
@@ -185,23 +206,29 @@ export const ConnectionGraphic = () => {
                   // The node's position relative to center is x, y + mouse offset
                   x: useTransform(
                     smoothMouseX,
-                    (val) => node.x + val * factorX,
+                    (val) => node.x * scale + val * factorX * scale,
                   ),
                   y: useTransform(
                     smoothMouseY,
-                    (val) => node.y + val * factorY,
+                    (val) => node.y * scale + val * factorY * scale,
                   ),
                 }}
                 className="absolute z-30"
               >
                 <div className="group relative flex flex-col items-center">
-                  <div className="relative p-4 bg-[#0F101E]/95 border border-white/10 rounded-2xl shadow-xl backdrop-blur-md group-hover:border-indigo-500/50 transition-all duration-300 group-hover:shadow-[0_0_30px_-5px_rgba(79,70,229,0.3)]">
+                  <div
+                    className={`relative ${isMobile ? "p-2" : "p-4"} bg-[#0F101E]/95 border border-white/10 rounded-xl md:rounded-2xl shadow-xl backdrop-blur-md group-hover:border-indigo-500/50 transition-all duration-300 group-hover:shadow-[0_0_30px_-5px_rgba(79,70,229,0.3)]`}
+                  >
                     <div
-                      className={`w-10 h-10 rounded-lg bg-gradient-to-br ${node.color} flex items-center justify-center text-white mb-2 shadow-lg group-hover:scale-110 transition-transform`}
+                      className={`${isMobile ? "w-8 h-8" : "w-10 h-10"} rounded-lg bg-linear-to-br ${node.color} flex items-center justify-center text-white mb-1.5 md:mb-2 shadow-lg group-hover:scale-110 transition-transform`}
                     >
-                      {node.icon}
+                      {React.cloneElement(node.icon as React.ReactElement, {
+                        size: isMobile ? 16 : 20,
+                      })}
                     </div>
-                    <span className="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">
+                    <span
+                      className={`${isMobile ? "text-[11px]" : "text-xs"} font-semibold text-slate-300 group-hover:text-white transition-colors`}
+                    >
                       {node.label}
                     </span>
 

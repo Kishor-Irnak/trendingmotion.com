@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="font-bold text-2xl tracking-tight text-white">
+            <span className="font-bold text-xl md:text-2xl tracking-tight text-white">
               TrendingMotion
             </span>
           </div>
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4">
-              <button className="w-full px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors">
+              <button className="w-full px-6 py-4 text-base font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] rounded-xl transition-all shadow-lg active:scale-95">
                 Get Started
               </button>
             </div>
