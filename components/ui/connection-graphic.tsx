@@ -222,9 +222,12 @@ export const ConnectionGraphic = () => {
                     <div
                       className={`${isMobile ? "w-8 h-8" : "w-10 h-10"} rounded-lg bg-linear-to-br ${node.color} flex items-center justify-center text-white mb-1.5 md:mb-2 shadow-lg group-hover:scale-110 transition-transform`}
                     >
-                      {React.cloneElement(node.icon as React.ReactElement, {
-                        size: isMobile ? 16 : 20,
-                      })}
+                      {React.cloneElement(
+                        node.icon as React.ReactElement<{ size?: number }>,
+                        {
+                          size: isMobile ? 16 : 20,
+                        },
+                      )}
                     </div>
                     <span
                       className={`${isMobile ? "text-[11px]" : "text-xs"} font-semibold text-slate-300 group-hover:text-white transition-colors`}
