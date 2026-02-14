@@ -38,8 +38,12 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="shrink-0 flex items-center gap-2 cursor-pointer group">
-            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-indigo-600 to-purple-600 flex items-center justify-center shadow-[0_0_15px_-3px_rgba(99,102,241,0.5)] group-hover:scale-110 transition-transform">
-              <Zap className="text-white fill-white/20" size={22} />
+            <div className="w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <img
+                src="https://i.postimg.cc/GhWnSTSq/favicon.png"
+                alt="TrendingMotion Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="font-bold text-2xl tracking-tight text-white">
               TrendingMotion
