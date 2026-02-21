@@ -35,7 +35,7 @@ const Features: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Digital Marketing (UPGRADED MAIN FEATURE) */}
           <BlurReveal className="md:col-span-1 row-span-2" delay={0.1}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-green-500/30 flex flex-col">
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-green-500/30 flex flex-col">
               {/* Background Glows */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 blur-[80px] rounded-full group-hover:bg-green-500/10 transition-all duration-700" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-500/5 blur-[60px] rounded-full group-hover:bg-emerald-500/10 transition-all duration-700" />
@@ -255,7 +255,7 @@ const Features: React.FC = () => {
 
           {/* Card 2: Brand Identity (Top Center) */}
           <BlurReveal delay={0.2}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-pink-500/30">
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-pink-500/30">
               <div className="absolute inset-0 bg-linear-to-tr from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 mb-6 group-hover:scale-110 transition-transform">
@@ -274,7 +274,7 @@ const Features: React.FC = () => {
 
           {/* Card 3: SEO & Analytics (Top Right) */}
           <BlurReveal delay={0.3}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-orange-500/30">
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-orange-500/30">
               <div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
                 <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
@@ -293,7 +293,7 @@ const Features: React.FC = () => {
 
           {/* Card 4: Web Development (Large bottom horizontal) */}
           <BlurReveal className="md:col-span-2" delay={0.4}>
-            <div className="group h-full relative overflow-hidden rounded-3xl bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-blue-500/30">
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-blue-500/30">
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/20 blur-[80px] rounded-full group-hover:bg-indigo-600/30 transition-all" />
 
               <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center h-full">
