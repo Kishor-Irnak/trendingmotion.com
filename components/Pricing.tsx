@@ -22,7 +22,7 @@ const Pricing: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
           {/* Starter Plan */}
           <BlurReveal delay={0.1}>
-            <div className="bg-[#0F101E] border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col shadow-2xl">
               <h3 className="text-white font-medium text-lg mb-2">Starter</h3>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-3xl font-bold text-white">₹14,999</span>
@@ -62,7 +62,7 @@ const Pricing: React.FC = () => {
 
           {/* Growth Plan (Highlighted) */}
           <BlurReveal delay={0.2} yOffset={20}>
-            <div className="bg-[#0F101E] border border-indigo-500/50 rounded-2xl p-8 relative shadow-[0_0_40px_-10px_rgba(79,70,229,0.3)] scale-105 z-10 h-full flex flex-col">
+            <div className="bg-white/10 backdrop-blur-2xl border border-indigo-500/50 rounded-2xl p-8 relative shadow-[0_0_40px_-10px_rgba(79,70,229,0.3)] scale-105 z-10 h-full flex flex-col">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 bg-indigo-600 rounded-full text-[10px] font-bold uppercase text-white tracking-wide">
                 Most Popular
               </div>
@@ -109,11 +109,11 @@ const Pricing: React.FC = () => {
 
           {/* Custom Plan */}
           <BlurReveal delay={0.3}>
-            <div className="bg-[#0F101E] border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col shadow-2xl">
               <h3 className="text-white font-medium text-lg mb-2">Custom</h3>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-3xl font-bold text-white">
-                  Let's Talk
+                  Let&apos;s Talk
                 </span>
               </div>
               <p className="text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4">

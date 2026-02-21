@@ -1,7 +1,6 @@
 import React from "react";
 import { ChevronRight, Play } from "lucide-react";
 import { BlurReveal } from "./ui/blur-reveal";
-import { ConnectionGraphic } from "./ui/connection-graphic";
 
 const Hero: React.FC = () => {
   return (
@@ -59,11 +58,6 @@ const Hero: React.FC = () => {
               <Play size={16} className="fill-current" /> View Work
             </button>
           </div>
-        </BlurReveal>
-
-        {/* Connection Graphic Ecosystem */}
-        <BlurReveal delay={0.6} duration={1.2} yOffset={40}>
-          <ConnectionGraphic />
         </BlurReveal>
       </div>
     </section>

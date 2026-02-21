@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased relative min-h-screen`}>
+        <AnimatedBackground />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

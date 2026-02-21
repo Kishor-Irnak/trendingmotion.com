@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || isOpen
-          ? "bg-[#05050A]/80 backdrop-blur-md border-b border-white/5"
+          ? "bg-black/20 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent border-transparent"
       }`}
     >
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#05050A] border-b border-white/10 absolute w-full">
+        <div className="md:hidden bg-black/40 backdrop-blur-xl border-b border-white/10 absolute w-full">
           <div className="px-4 pt-2 pb-6 space-y-1">
             {navLinks.map((link) => (
               <a

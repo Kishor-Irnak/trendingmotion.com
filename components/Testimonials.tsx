@@ -28,7 +28,7 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#05050A] relative">
+    <section className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-6">
         <BlurReveal className="mb-12">
           <div className="flex items-center gap-2 mb-4">

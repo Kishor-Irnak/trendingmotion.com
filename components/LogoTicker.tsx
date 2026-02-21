@@ -13,7 +13,7 @@ const LogoTicker: React.FC = () => {
   ];
 
   return (
-    <div className="py-10 border-y border-white/5 bg-[#05050A]">
+    <div className="py-10 border-y border-white/5 bg-transparent">
       <BlurReveal className="max-w-7xl mx-auto px-6 mb-6 text-center">
         <p className="text-sm text-slate-500 font-medium tracking-wider uppercase">
           DRIVING GROWTH WITH CORE TECHNOLOGY
@@ -33,8 +33,8 @@ const LogoTicker: React.FC = () => {
         </div>
 
         {/* Gradient Fades */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#05050A] to-transparent z-10" />
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#05050A] to-transparent z-10" />
+        <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-[#05050A]/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#05050A]/80 to-transparent z-10 pointer-events-none" />
       </div>
     </div>
   );
