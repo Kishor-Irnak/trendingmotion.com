@@ -1,161 +1,231 @@
-import React from "react";
-import { Check } from "lucide-react";
+"use client";
+
+import React, { useState } from "react";
+import { Check, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
 import { BlurReveal } from "./ui/blur-reveal";
 
-const Pricing: React.FC = () => {
+const plans = [
+  {
+    id: "starter",
+    name: "Starter",
+    price: "₹14,999",
+    period: "/ month",
+    description:
+      "Everything you need to launch and get your first wave of leads.",
+    cta: "Get Started",
+    ctaStyle: "secondary",
+    features: [
+      "Meta or Google Ads Setup",
+      "Smart Audience Research",
+      "3 High-Converting Creatives",
+      "WhatsApp Lead Setup",
+      "Landing Page Optimization",
+      "10 Social Media Posts",
+      "Daily Ad Monitoring",
+      "Monthly Performance Report",
+    ],
+  },
+  {
+    id: "growth",
+    name: "Growth",
+    price: "₹24,999",
+    period: "/ month",
+    description:
+      "A full-stack growth engine for brands ready to scale aggressively.",
+    badge: "Most Popular",
+    cta: "Start Free Trial",
+    ctaStyle: "primary",
+    features: [
+      "Complete Performance Marketing",
+      "Advanced Retargeting + Funnel",
+      "10–12 High-End Creatives",
+      "Dedicated Creative Strategy",
+      "Full Social Media Management",
+      "8 Posts + 4 Reels / month",
+      "Branding Enhancement",
+      "Conversion Landing Page",
+      "WhatsApp + Lead Tracking",
+      "Advanced SEO (On-page + Technical)",
+      "A/B Testing & Data Scaling",
+      "Priority Support + Weekly Meet",
+    ],
+  },
+  {
+    id: "custom",
+    name: "Custom",
+    price: "Let's Talk",
+    period: null,
+    description:
+      "Fully tailored solutions for high-growth companies and enterprises.",
+    cta: "Contact Sales",
+    ctaStyle: "secondary",
+    features: [
+      "Everything in Growth",
+      "Dedicated Strategy Team",
+      "Unlimited Creative Testing",
+      "Professional Video Editing",
+      "Branding & Positioning",
+      "Lead Tracking System",
+      "Advanced SEO",
+      "A/B Testing at Scale",
+      "Weekly Strategy Meetings",
+      "Direct Founder-Level Access",
+      "SLA-backed Priority Support",
+    ],
+  },
+];
+
+const trustItems = [
+  { label: "No contracts", icon: "✦" },
+  { label: "Cancel anytime", icon: "✦" },
+  { label: "Onboarding included", icon: "✦" },
+  { label: "Dedicated account manager", icon: "✦" },
+];
+
+export default function Pricing() {
   return (
-    <section id="pricing" className="py-12 sm:py-16 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <BlurReveal className="text-center mb-10">
-          <div className="inline-block mb-4 px-3 py-1 rounded-full bg-green-900/30 text-green-400 text-xs font-bold uppercase">
+    <section id="pricing" className="py-16 sm:py-20 relative overflow-hidden">
+      {/* top ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-72 bg-indigo-600/10 blur-[120px] pointer-events-none rounded-full" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* ── Section header ── */}
+        <BlurReveal className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[11px] font-bold uppercase tracking-widest mb-5">
+            <Sparkles size={11} />
             Pricing
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Plans Made for Teams of All Sizes
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
+            Simple, transparent pricing
           </h2>
-          <p className="text-slate-400">
-            From startups to enterprises, choose the right plan to keep projects
-            on track.
+          <p className="text-slate-400 text-sm sm:text-base max-w-sm mx-auto leading-relaxed">
+            No surprises. Pick a plan and start growing — we handle the rest.
           </p>
         </BlurReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-          {/* Starter Plan */}
-          <BlurReveal delay={0.1}>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col shadow-2xl">
-              <h3 className="text-white font-medium text-lg mb-2">Starter</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-bold text-white">₹14,999</span>
-                <span className="text-slate-500 text-sm">/Month</span>
-              </div>
-              <p className="text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                What You Get:
-              </p>
-              <ul className="space-y-3 mb-8 flex-grow">
-                {[
-                  "Meta or Google Ads Setup",
-                  "Smart Audience Research",
-                  "3 High-Converting Creatives",
-                  "WhatsApp Lead Setup",
-                  "Landing Page Basic Optimization",
-                  "10 Social Media Posts",
-                  "Daily Ad Monitoring",
-                  "Monthly Performance Report",
-                ].map((feat) => (
-                  <li
-                    key={feat}
-                    className="flex items-start gap-3 text-sm text-slate-300"
-                  >
-                    <Check
-                      size={14}
-                      className="text-indigo-500 mt-1 flex-shrink-0"
-                    />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-2.5 rounded-lg border border-white/20 text-white hover:bg-white/5 transition-colors text-sm font-medium mt-auto">
-                Get Started
-              </button>
-            </div>
-          </BlurReveal>
+        {/* ── Cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 items-stretch">
+          {plans.map((plan, idx) => {
+            const isPopular = plan.id === "growth";
+            return (
+              <BlurReveal key={plan.id} delay={idx * 0.08}>
+                <div
+                  className={`relative flex flex-col h-full rounded-2xl sm:rounded-3xl border transition-all duration-300 group
+                    ${
+                      isPopular
+                        ? "border-indigo-500/40 bg-[#0d0e1e] shadow-[0_0_60px_-15px_rgba(99,102,241,0.4)]"
+                        : "border-white/8 bg-white/[0.025] hover:border-white/14 hover:bg-white/[0.04]"
+                    }
+                  `}
+                >
+                  {/* Popular ribbon */}
+                  {isPopular && (
+                    <div className="absolute -top-px left-0 right-0 h-px bg-linear-to-r from-transparent via-indigo-500 to-transparent" />
+                  )}
+                  {plan.badge && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-600 rounded-full text-[10px] font-bold text-white uppercase tracking-widest whitespace-nowrap shadow-lg shadow-indigo-500/30 flex items-center gap-1.5">
+                      <Sparkles size={9} className="fill-white text-white" />
+                      {plan.badge}
+                    </div>
+                  )}
 
-          {/* Growth Plan (Highlighted) */}
-          <BlurReveal delay={0.2} yOffset={20}>
-            <div className="bg-white/10 backdrop-blur-2xl border border-indigo-500/50 rounded-2xl p-8 relative shadow-[0_0_40px_-10px_rgba(79,70,229,0.3)] scale-105 z-10 h-full flex flex-col">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 bg-indigo-600 rounded-full text-[10px] font-bold uppercase text-white tracking-wide">
-                Most Popular
-              </div>
-              <h3 className="text-white font-medium text-lg mb-2">Growth</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-bold text-white">₹24,999</span>
-                <span className="text-slate-500 text-sm">/Month</span>
-              </div>
-              <p className="text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                What You Get:
-              </p>
-              <ul className="space-y-3 mb-8 flex-grow">
-                {[
-                  "Complete Performance Marketing",
-                  "Advanced Retargeting + Funnel Strategy",
-                  "10–12 High-End Creatives",
-                  "Dedicated Creative Strategy",
-                  "Full Social Media Management",
-                  "8 Posts + 4 Reels",
-                  "Branding Enhancement",
-                  "Conversion Focused Landing Page Optimization",
-                  "WhatsApp + Lead Tracking System",
-                  "Advanced SEO (On-page + Technical)",
-                  "A/B Testing & Data Scaling",
-                  "Priority Support + Weekly Strategy Meet",
-                ].map((feat) => (
-                  <li
-                    key={feat}
-                    className="flex items-start gap-3 text-sm text-slate-300"
-                  >
-                    <Check
-                      size={14}
-                      className="text-indigo-500 mt-1 flex-shrink-0"
-                    />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-2.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors text-sm font-medium shadow-lg shadow-indigo-500/25 mt-auto">
-                Start Free Trial
-              </button>
-            </div>
-          </BlurReveal>
+                  <div className="p-6 sm:p-7 flex flex-col flex-1">
+                    {/* Plan header */}
+                    <div className="mb-6 pb-6 border-b border-white/6">
+                      <p
+                        className={`text-xs font-bold uppercase tracking-widest mb-3 ${isPopular ? "text-indigo-400" : "text-slate-500"}`}
+                      >
+                        {plan.name}
+                      </p>
+                      <div className="flex items-end gap-1.5 mb-3">
+                        <span className="text-3xl sm:text-4xl font-bold text-white leading-none tracking-tight">
+                          {plan.price}
+                        </span>
+                        {plan.period && (
+                          <span className="text-slate-500 text-sm mb-0.5">
+                            {plan.period}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        {plan.description}
+                      </p>
+                    </div>
 
-          {/* Custom Plan */}
-          <BlurReveal delay={0.3}>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 h-full flex flex-col shadow-2xl">
-              <h3 className="text-white font-medium text-lg mb-2">Custom</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-bold text-white">
-                  Let&apos;s Talk
-                </span>
-              </div>
-              <p className="text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                Everything We Offer – Fully Customized:
-              </p>
-              <ul className="space-y-3 mb-8 flex-grow">
-                {[
-                  "Complete Performance Marketing",
-                  "Advanced Retargeting + Scaling Strategy",
-                  "Dedicated Creative Strategy Team",
-                  "Unlimited Creative Testing",
-                  "Professional Video Editing",
-                  "Full Social Media Management",
-                  "Branding & Positioning Strategy",
-                  "Lead Tracking System Setup",
-                  "Advanced SEO",
-                  "A/B Testing + Data Driven Scaling",
-                  "Weekly Strategy Meetings",
-                  "Direct Founder-Level Communication",
-                  "Priority Support",
-                ].map((feat) => (
-                  <li
-                    key={feat}
-                    className="flex items-start gap-3 text-sm text-slate-300"
-                  >
-                    <Check
-                      size={14}
-                      className="text-indigo-500 mt-1 flex-shrink-0"
-                    />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-2.5 rounded-lg border border-white/20 text-white hover:bg-white/5 transition-colors text-sm font-medium mt-auto">
-                Contact Sales
-              </button>
-            </div>
-          </BlurReveal>
+                    {/* Features */}
+                    <ul className="space-y-2.5 flex-1 mb-7">
+                      {plan.features.map((feat) => (
+                        <li
+                          key={feat}
+                          className="flex items-start gap-2.5 text-sm text-slate-300"
+                        >
+                          <span
+                            className={`mt-0.5 flex-shrink-0 w-[18px] h-[18px] rounded-full flex items-center justify-center
+                            ${isPopular ? "bg-indigo-500/15" : "bg-white/5"}`}
+                          >
+                            <Check
+                              size={10}
+                              strokeWidth={3}
+                              className={
+                                isPopular ? "text-indigo-400" : "text-slate-400"
+                              }
+                            />
+                          </span>
+                          <span className="leading-snug">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA button */}
+                    {plan.ctaStyle === "primary" ? (
+                      <button className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-bold transition-all duration-200 shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/30">
+                        {plan.cta}
+                        <ArrowRight
+                          size={14}
+                          className="transition-transform group-hover:translate-x-0.5"
+                        />
+                      </button>
+                    ) : (
+                      <button className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 rounded-xl border border-white/10 hover:border-white/20 bg-white/[0.03] hover:bg-white/[0.06] active:scale-[0.98] text-white text-sm font-semibold transition-all duration-200">
+                        {plan.cta}
+                        <ArrowRight
+                          size={14}
+                          className="text-slate-400 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </BlurReveal>
+            );
+          })}
         </div>
+
+        {/* ── Trust row ── */}
+        <BlurReveal delay={0.25} className="mt-10 sm:mt-12">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-10">
+            {trustItems.map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-2 text-slate-500 text-xs sm:text-sm"
+              >
+                <span className="text-indigo-500 text-[10px]">{item.icon}</span>
+                {item.label}
+              </div>
+            ))}
+          </div>
+          <p className="text-center mt-5 text-slate-600 text-xs">
+            Need something custom?{" "}
+            <a
+              href="#"
+              className="text-indigo-400 hover:text-indigo-300 transition-colors inline-flex items-center gap-1 font-medium"
+            >
+              <MessageCircle size={11} />
+              Chat with us
+            </a>
+          </p>
+        </BlurReveal>
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}
