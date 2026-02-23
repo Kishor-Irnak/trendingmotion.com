@@ -4,9 +4,9 @@ import { BlurReveal } from "./ui/blur-reveal";
 
 const Pricing: React.FC = () => {
   return (
-    <section id="pricing" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <BlurReveal className="text-center mb-16">
+    <section id="pricing" className="py-12 sm:py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <BlurReveal className="text-center mb-10">
           <div className="inline-block mb-4 px-3 py-1 rounded-full bg-green-900/30 text-green-400 text-xs font-bold uppercase">
             Pricing
           </div>

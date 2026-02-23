@@ -3,8 +3,8 @@ import { Twitter, Instagram, Facebook, Dribbble } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-transparent border-t border-white/5 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-transparent border-t border-white/5 pt-10 sm:pt-14 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-white font-bold text-lg mb-4">

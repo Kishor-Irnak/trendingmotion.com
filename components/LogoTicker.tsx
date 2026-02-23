@@ -13,9 +13,9 @@ const LogoTicker: React.FC = () => {
   ];
 
   return (
-    <div className="py-20 relative overflow-hidden">
+    <div className="py-8 sm:py-12 relative overflow-hidden">
       {/* Container with background and blur */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 py-12 relative overflow-hidden">
           <BlurReveal className="mb-8 text-center">
             <p className="text-sm text-slate-400/60 font-medium tracking-[0.2em] uppercase">

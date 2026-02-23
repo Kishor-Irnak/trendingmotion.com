@@ -25,12 +25,12 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-20 relative overflow-hidden">
+    <section id="process" className="py-12 sm:py-16 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-1/2 right-0 w-1/3 h-full bg-indigo-900/10 blur-[100px] -translate-y-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6">
-        <BlurReveal className="text-center mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <BlurReveal className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Get Set Up in Minutes, <br /> Start Moving Fast
           </h2>
@@ -41,7 +41,7 @@ const Process: React.FC = () => {
 
         <div className="relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-indigo-500/10 via-indigo-500/50 to-indigo-500/10 z-0" />
+          <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-linear-to-r from-indigo-500/10 via-indigo-500/50 to-indigo-500/10 z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {steps.map((step, index) => (

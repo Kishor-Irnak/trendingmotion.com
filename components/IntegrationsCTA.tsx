@@ -158,15 +158,136 @@ export default function IntegrationsCTA() {
     return { left: `${left}%`, top: `${top}%` };
   };
 
+  // Flat icon list for mobile grid
+  const mobileIcons = [
+    {
+      icon: TrendingUp,
+      color: "text-indigo-400",
+      bg: "bg-indigo-500/10",
+      border: "border-indigo-500/20",
+      label: "Growth",
+    },
+    {
+      icon: Search,
+      color: "text-cyan-400",
+      bg: "bg-cyan-500/10",
+      border: "border-cyan-500/20",
+      label: "SEO",
+    },
+    {
+      icon: Target,
+      color: "text-teal-400",
+      bg: "bg-teal-500/10",
+      border: "border-teal-500/20",
+      label: "Targeting",
+    },
+    {
+      icon: BarChart3,
+      color: "text-orange-400",
+      bg: "bg-orange-500/10",
+      border: "border-orange-500/20",
+      label: "Analytics",
+    },
+    {
+      icon: Code2,
+      color: "text-blue-400",
+      bg: "bg-blue-500/10",
+      border: "border-blue-500/20",
+      label: "Web Dev",
+    },
+    {
+      icon: Megaphone,
+      color: "text-purple-400",
+      bg: "bg-purple-500/10",
+      border: "border-purple-500/20",
+      label: "Ads",
+    },
+    {
+      icon: Share2,
+      color: "text-amber-400",
+      bg: "bg-amber-500/10",
+      border: "border-amber-500/20",
+      label: "Social",
+    },
+    {
+      icon: Mail,
+      color: "text-sky-400",
+      bg: "bg-sky-500/10",
+      border: "border-sky-500/20",
+      label: "Email",
+    },
+    {
+      icon: Zap,
+      color: "text-yellow-400",
+      bg: "bg-yellow-500/10",
+      border: "border-yellow-500/20",
+      label: "Speed",
+    },
+    {
+      icon: Globe,
+      color: "text-violet-400",
+      bg: "bg-violet-500/10",
+      border: "border-violet-500/20",
+      label: "Reach",
+    },
+    {
+      icon: Palette,
+      color: "text-pink-400",
+      bg: "bg-pink-500/10",
+      border: "border-pink-500/20",
+      label: "Branding",
+    },
+    {
+      icon: Lightbulb,
+      color: "text-amber-300",
+      bg: "bg-amber-400/10",
+      border: "border-amber-400/20",
+      label: "Strategy",
+    },
+  ];
+
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden flex flex-col items-center">
-      <div className="max-w-7xl mx-auto px-6 w-full relative">
-        <div className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[3.5rem] py-24 px-8 relative overflow-hidden flex flex-col items-center shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+    <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative">
+        <div className="bg-white/3 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] sm:rounded-[3.5rem] py-10 sm:py-16 md:py-20 px-5 sm:px-8 relative overflow-hidden flex flex-col items-center shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
           {/* Intense Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-500/10 blur-[100px] pointer-events-none" />
 
-          {/* Arches Container */}
-          <div className="relative z-10 w-full max-w-[1000px] h-[300px] md:h-[450px] flex items-end justify-center overflow-hidden mask-image-gradient mt-8">
+          {/* ── MOBILE: Icon Grid (shown only on sm and below) ── */}
+          <div className="md:hidden relative z-10 w-full mb-8">
+            {/* Center glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-indigo-600/20 blur-[60px] rounded-full pointer-events-none" />
+            <div className="grid grid-cols-4 gap-3 relative z-10">
+              {mobileIcons.map((item, i) => {
+                const IconComponent = item.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: i * 0.05,
+                      duration: 0.4,
+                      ease: "easeOut",
+                    }}
+                    className="flex flex-col items-center gap-1.5"
+                  >
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 ${item.bg} border ${item.border} rounded-2xl shadow-lg backdrop-blur-sm`}
+                    >
+                      <IconComponent className={item.color} size={22} />
+                    </div>
+                    <span className="text-[9px] font-medium text-slate-500 tracking-wide">
+                      {item.label}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── DESKTOP: Orbit Animation (hidden on mobile) ── */}
+          <div className="hidden md:flex relative z-10 w-full max-w-[1000px] h-[450px] items-end justify-center overflow-hidden mask-image-gradient mt-8">
             {rings.map((ring, index) => (
               <div
                 key={`ring-${index}`}
@@ -175,11 +296,10 @@ export default function IntegrationsCTA() {
               />
             ))}
 
-            {/* --- Rotating Icons on Rings --- */}
             {orbits.map((orbit, orbitIndex) => (
               <div
                 key={`orbit-${orbitIndex}`}
-                className={`absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 pointer-events-none ${orbit.size > 450 ? "hidden md:block" : ""}`}
+                className={`absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 pointer-events-none`}
                 style={{ width: orbit.size, height: orbit.size }}
               >
                 <motion.div
@@ -229,29 +349,29 @@ export default function IntegrationsCTA() {
             ))}
 
             {/* Fade to transparent bottom */}
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-black/20 to-transparent z-10 pointer-events-none" />
           </div>
 
-          {/* Main Copy Below Arches */}
-          <div className="relative z-20 text-center mt-[-30px] md:mt-[-40px]">
+          {/* Main Copy */}
+          <div className="relative z-20 text-center md:mt-[-40px] w-full max-w-2xl mx-auto">
             <BlurReveal delay={0.2}>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6 max-w-xl md:max-w-3xl mx-auto leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4 sm:mb-6 leading-tight">
                 Ready to scale your brand with data-driven marketing?
               </h2>
             </BlurReveal>
             <BlurReveal delay={0.3}>
-              <p className="text-slate-300 md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-xl text-slate-300 mb-8 sm:mb-10 leading-relaxed px-2">
                 Work smarter with TrendingMotion. All your SEO, marketing, and
                 development needs seamlessly connected in one place.
               </p>
             </BlurReveal>
             <BlurReveal delay={0.4}>
-              <button className="group relative inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] active:scale-95 group/btn">
+              <button className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] active:scale-95 text-sm sm:text-base">
                 <span className="relative z-10 flex items-center gap-2">
-                  Get Started for free
+                  Get Started for Free
                   <ArrowRight
                     size={18}
-                    className="group-hover/btn:translate-x-1 transition-transform"
+                    className="group-hover:translate-x-1 transition-transform"
                   />
                 </span>
               </button>

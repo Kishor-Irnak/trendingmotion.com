@@ -28,9 +28,9 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-transparent relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <BlurReveal className="mb-12">
+    <section className="py-12 sm:py-16 bg-transparent relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <BlurReveal className="mb-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
               <Star size={12} className="text-green-500 fill-green-500" />
@@ -54,7 +54,7 @@ const Testimonials: React.FC = () => {
               <div className="bg-[#0F101E] border border-white/10 p-8 rounded-2xl hover:bg-white/5 transition-colors h-full">
                 {/* User */}
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-600 mb-3 overflow-hidden">
+                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-slate-700 to-slate-600 mb-3 overflow-hidden">
                     <img
                       src={`https://picsum.photos/seed/${idx + 50}/100`}
                       alt={review.name}

@@ -15,9 +15,9 @@ import { BlurReveal } from "./ui/blur-reveal";
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <BlurReveal className="mb-16 md:text-center max-w-3xl mx-auto">
+    <section id="features" className="py-12 sm:py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <BlurReveal className="mb-10 md:text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
             Our Expertise
           </div>
