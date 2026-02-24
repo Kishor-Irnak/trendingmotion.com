@@ -12,9 +12,6 @@ export const metadata: Metadata = {
   title: "TrendingMotion | Digital Agency",
   description:
     "We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
@@ -24,6 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://i.postimg.cc/GhWnSTSq/favicon.png"
+        />
+      </head>
       <body className={`${inter.variable} antialiased relative min-h-screen`}>
         <AnimatedBackground />
         <div className="relative z-10 flex flex-col min-h-screen">
