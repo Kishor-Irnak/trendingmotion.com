@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert.",
   icons: {
-    icon: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
