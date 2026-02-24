@@ -13,12 +13,17 @@ const Footer: React.FC = () => {
             <p className="text-slate-500 text-sm mb-6">
               Workspace that remembers everything for you.
             </p>
+            <div className="mb-6">
+              <a
+                href="mailto:official@trendingmotion.com"
+                className="text-slate-400 hover:text-indigo-400 text-sm transition-colors"
+              >
+                official@trendingmotion.com
+              </a>
+            </div>
             <div className="flex gap-2">
               <button className="bg-white/5 hover:bg-white/10 text-white text-xs px-4 py-2 rounded border border-white/10 transition-colors">
                 Get Started
-              </button>
-              <button className="text-slate-400 hover:text-white text-xs px-4 py-2 transition-colors">
-                Sign Up
               </button>
             </div>
           </div>

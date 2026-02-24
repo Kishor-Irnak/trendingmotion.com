@@ -48,6 +48,7 @@ const plans = [
       "Advanced SEO (On-page + Technical)",
       "A/B Testing & Data Scaling",
       "Priority Support + Weekly Meet",
+      "Dedicated Account Manager",
     ],
   },
   {
