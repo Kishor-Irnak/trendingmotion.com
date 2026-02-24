@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
+import { Check, Sparkles, ArrowRight } from "lucide-react";
 import { BlurReveal } from "./ui/blur-reveal";
 
 const plans = [
@@ -74,13 +74,6 @@ const plans = [
       "SLA-backed Priority Support",
     ],
   },
-];
-
-const trustItems = [
-  { label: "No contracts", icon: "✦" },
-  { label: "Cancel anytime", icon: "✦" },
-  { label: "Onboarding included", icon: "✦" },
-  { label: "Dedicated account manager", icon: "✦" },
 ];
 
 export default function Pricing() {
@@ -201,31 +194,6 @@ export default function Pricing() {
             );
           })}
         </div>
-
-        {/* ── Trust row ── */}
-        <BlurReveal delay={0.25} className="mt-10 sm:mt-12">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-10">
-            {trustItems.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-2 text-slate-500 text-xs sm:text-sm"
-              >
-                <span className="text-indigo-500 text-[10px]">{item.icon}</span>
-                {item.label}
-              </div>
-            ))}
-          </div>
-          <p className="text-center mt-5 text-slate-600 text-xs">
-            Need something custom?{" "}
-            <a
-              href="#"
-              className="text-indigo-400 hover:text-indigo-300 transition-colors inline-flex items-center gap-1 font-medium"
-            >
-              <MessageCircle size={11} />
-              Chat with us
-            </a>
-          </p>
-        </BlurReveal>
       </div>
     </section>
   );
