@@ -98,13 +98,17 @@ const Footer: React.FC = () => {
               <Dribbble size={18} />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/trendingmotion.co"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-500 hover:text-white transition-colors"
             >
               <Instagram size={18} />
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/share/1AFnphd6um/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-slate-500 hover:text-white transition-colors"
             >
               <Facebook size={18} />

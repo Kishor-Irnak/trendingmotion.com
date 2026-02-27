@@ -67,9 +67,11 @@ const Navbar: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <button className="px-8 py-3 text-sm font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] rounded-full transition-all duration-300 shadow-[0_0_20px_-5px_rgba(124,58,237,0.5)] border border-white/10 active:scale-95">
-              Get Started
-            </button>
+            <a href="#contact">
+              <button className="px-8 py-3 text-sm font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] rounded-full transition-all duration-300 shadow-[0_0_20px_-5px_rgba(124,58,237,0.5)] border border-white/10 active:scale-95">
+                Get Started
+              </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,9 +101,13 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4">
-              <button className="w-full px-6 py-4 text-base font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] rounded-xl transition-all shadow-lg active:scale-95">
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center px-6 py-4 text-base font-bold text-white bg-linear-to-r from-[#4F46E5] to-[#7C3AED] rounded-xl transition-all shadow-lg active:scale-95"
+              >
                 Get Started
-              </button>
+              </a>
             </div>
           </div>
         </div>

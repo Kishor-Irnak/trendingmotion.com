@@ -9,6 +9,7 @@ import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import IntegrationsCTA from "@/components/IntegrationsCTA";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 export default function Page() {
   return (
@@ -24,6 +25,17 @@ export default function Page() {
         <Pricing />
         <FAQ />
         <IntegrationsCTA />
+
+        {/* Contact Us Section */}
+        <section
+          id="contact"
+          className="py-8 lg:py-24 px-4 sm:px-6 relative flex justify-center w-full"
+        >
+          {/* subtle blur background behind form */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[500px] bg-indigo-900/10 blur-[100px] rounded-full pointer-events-none" />
+          <ContactForm />
+        </section>
+
         <Footer />
       </div>
     </div>
