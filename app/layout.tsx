@@ -9,9 +9,68 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TrendingMotion | Digital Agency",
+  metadataBase: new URL("https://trendingmotion.com"),
+  title: {
+    default: "TrendingMotion | Premier Digital Marketing Agency",
+    template: "%s | TrendingMotion",
+  },
   description:
-    "We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert.",
+    "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert and scale.",
+  keywords: [
+    "Digital Marketing Agency",
+    "SEO Services",
+    "Web Development",
+    "Performance Marketing",
+    "Branding Agency",
+    "TrendingMotion",
+  ],
+  authors: [{ name: "TrendingMotion Team" }],
+  creator: "TrendingMotion",
+  publisher: "TrendingMotion",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://trendingmotion.com",
+    siteName: "TrendingMotion",
+    title: "TrendingMotion | Premier Digital Marketing Agency",
+    description:
+      "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert and scale.",
+    images: [
+      {
+        url: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "TrendingMotion",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TrendingMotion | Premier Digital Marketing Agency",
+    description:
+      "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development.",
+    images: ["https://i.postimg.cc/GhWnSTSq/favicon.png"],
+    creator: "@trendingmotion",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+    shortcut: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+    apple: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+  },
+  verification: {
+    google: "7pM8V3csTlExHRuYIZmQMTFWmZSlRilx-duiaO5gq8o",
+  },
 };
 
 const WHATSAPP_LINK =
