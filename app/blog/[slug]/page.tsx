@@ -154,9 +154,6 @@ export default async function BlogPost({ params }: Props) {
                   year: "numeric",
                 })}
               </span>
-              <span className="px-5 py-2 text-sm font-medium bg-transparent border border-white/10 hover:border-white/20 transition-colors rounded-full text-slate-300">
-                {post.readTime}
-              </span>
             </div>
           </div>
         </header>

@@ -10,6 +10,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const WHATSAPP_LINK =
   "https://wa.me/917889254092?text=Hi%20TrendingMotion%2C%20I'm%20interested%20in%20your%20services.%20Can%20we%20discuss%20a%20project%3F";
@@ -33,12 +35,24 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate generic form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      await addDoc(collection(db, "leads"), {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        category: formData.service,
+        budget: formData.budget,
+        message: formData.details,
+        formType: "contact",
+        status: "leads",
+        createdAt: new Date().toISOString(),
+        timestamp: serverTimestamp(),
+      });
+
       alert("Thanks! Your message has been sent successfully.");
       setFormData({
         name: "",
@@ -48,7 +62,12 @@ export default function ContactForm() {
         budget: "",
         details: "",
       });
-    }, 1500);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

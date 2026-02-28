@@ -3,7 +3,7 @@ import Link from "next/link";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Metadata } from "next";
-import { ArrowRight, Calendar, User, Clock } from "lucide-react";
+import { ArrowRight, Calendar, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -88,10 +88,6 @@ export default async function BlogList() {
                             year: "numeric",
                           })}
                         </span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Clock size={14} className="text-indigo-400" />
-                        <span>{post.readTime}</span>
                       </div>
                     </div>
 

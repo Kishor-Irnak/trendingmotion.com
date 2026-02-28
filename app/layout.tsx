@@ -2,85 +2,161 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://trendingmotion.com"),
-  title: {
-    default: "TrendingMotion | Premier Digital Marketing Agency",
-    template: "%s | TrendingMotion",
-  },
-  description:
-    "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert and scale.",
-  keywords: [
-    "Digital Marketing Agency",
-    "SEO Services",
-    "Web Development",
-    "Performance Marketing",
-    "Branding Agency",
-    "TrendingMotion",
-  ],
-  authors: [{ name: "TrendingMotion Team" }],
-  creator: "TrendingMotion",
-  publisher: "TrendingMotion",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://trendingmotion.com",
-    siteName: "TrendingMotion",
-    title: "TrendingMotion | Premier Digital Marketing Agency",
+export async function generateMetadata(): Promise<Metadata> {
+  const defaultMeta: Metadata = {
+    metadataBase: new URL("https://trendingmotion.com"),
+    title: {
+      default: "TrendingMotion | Premier Digital Marketing Agency",
+      template: "%s | TrendingMotion",
+    },
     description:
       "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert and scale.",
-    images: [
-      {
-        url: "https://i.postimg.cc/GhWnSTSq/favicon.png",
-        width: 1200,
-        height: 630,
-        alt: "TrendingMotion",
-      },
+    keywords: [
+      "Digital Marketing Agency",
+      "SEO Services",
+      "Web Development",
+      "Performance Marketing",
+      "Branding Agency",
+      "TrendingMotion",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TrendingMotion | Premier Digital Marketing Agency",
-    description:
-      "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development.",
-    images: ["https://i.postimg.cc/GhWnSTSq/favicon.png"],
-    creator: "@trendingmotion",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    authors: [{ name: "TrendingMotion Team" }],
+    creator: "TrendingMotion",
+    publisher: "TrendingMotion",
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: "https://trendingmotion.com",
+      siteName: "TrendingMotion",
+      title: "TrendingMotion | Premier Digital Marketing Agency",
+      description:
+        "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development to build experiences that convert and scale.",
+      images: [
+        {
+          url: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+          width: 1200,
+          height: 630,
+          alt: "TrendingMotion",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "TrendingMotion | Premier Digital Marketing Agency",
+      description:
+        "TrendingMotion is a top-tier digital marketing agency. We combine data-driven marketing, cutting-edge branding, and robust web development.",
+      images: ["https://i.postimg.cc/GhWnSTSq/favicon.png"],
+      creator: "@trendingmotion",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  icons: {
-    icon: "https://i.postimg.cc/GhWnSTSq/favicon.png",
-    shortcut: "https://i.postimg.cc/GhWnSTSq/favicon.png",
-    apple: "https://i.postimg.cc/GhWnSTSq/favicon.png",
-  },
-  verification: {
-    google: "7pM8V3csTlExHRuYIZmQMTFWmZSlRilx-duiaO5gq8o",
-  },
-};
+    icons: {
+      icon: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+      shortcut: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+      apple: "https://i.postimg.cc/GhWnSTSq/favicon.png",
+    },
+    verification: {
+      google: "7pM8V3csTlExHRuYIZmQMTFWmZSlRilx-duiaO5gq8o",
+    },
+  };
+
+  try {
+    const seoDoc = await getDoc(doc(db, "settings", "seo"));
+    if (seoDoc.exists()) {
+      const data = seoDoc.data();
+      return {
+        ...defaultMeta,
+        metadataBase: data.canonicalUrl
+          ? new URL(data.canonicalUrl)
+          : defaultMeta.metadataBase,
+        title: {
+          default: data.title || (defaultMeta.title as any).default,
+          template: "%s | TrendingMotion",
+        },
+        description: data.description || defaultMeta.description,
+        keywords: data.keywords
+          ? data.keywords.split(",").map((k: string) => k.trim())
+          : defaultMeta.keywords,
+        authors: [{ name: data.author || "TrendingMotion Team" }],
+        openGraph: {
+          ...defaultMeta.openGraph,
+          title: data.ogTitle || data.title || "TrendingMotion",
+          description: data.ogDescription || data.description,
+          url: data.canonicalUrl || "https://trendingmotion.com",
+          images: data.ogImage
+            ? [
+                {
+                  url: data.ogImage,
+                  width: 1200,
+                  height: 630,
+                  alt: data.title || "TrendingMotion",
+                },
+              ]
+            : defaultMeta.openGraph?.images,
+        },
+        twitter: {
+          ...defaultMeta.twitter,
+          title: data.ogTitle || data.title || "TrendingMotion",
+          description: data.ogDescription || data.description,
+          creator: data.twitterHandle || "@trendingmotion",
+          images: data.ogImage ? [data.ogImage] : defaultMeta.twitter?.images,
+        },
+        robots: data.robotsTxt
+          ? {
+              index: data.robotsTxt.includes("index"),
+              follow: data.robotsTxt.includes("follow"),
+              googleBot: {
+                index: data.robotsTxt.includes("index"),
+                follow: data.robotsTxt.includes("follow"),
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+              },
+            }
+          : defaultMeta.robots,
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching SEO metadata:", error);
+  }
+
+  return defaultMeta;
+}
 
 const WHATSAPP_LINK =
   "https://wa.me/917889254092?text=%20Hi%2C%20I%E2%80%99m%20looking%20for%20a%20serious%20marketing%20partner.%20My%20budget%20is%20ready.%20Can%20we%20schedule%20a%20strategy%20call%3F";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let gaId = "";
+  try {
+    const seoDoc = await getDoc(doc(db, "settings", "seo"));
+    if (seoDoc.exists()) {
+      gaId = seoDoc.data().googleAnalyticsId || "";
+    }
+  } catch (error) {
+    console.error("Error fetching GA ID:", error);
+  }
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -89,6 +165,24 @@ export default function RootLayout({
           type="image/png"
           href="https://i.postimg.cc/GhWnSTSq/favicon.png"
         />
+        {gaId && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            ></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}');
+                `,
+              }}
+            />
+          </>
+        )}
         <style>{`
           @keyframes wa-pulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
