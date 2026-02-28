@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 export const revalidate = 60;
+export const dynamicParams = false;
 
 async function fetchPostBySlug(slug: string) {
   try {
@@ -78,7 +79,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return await fetchAllSlugs();
+  const slugs = await fetchAllSlugs();
+  // Next.js static export requires at least one parameter object,
+  // or dynamicParams must be false. However, sometimes it still throws
+  // "missing generateStaticParams()" if the array is completely empty during export.
+  if (!slugs || slugs.length === 0) {
+    return [{ slug: "fallback-empty" }];
+  }
+  return slugs;
 }
 
 export default async function BlogPost({ params }: Props) {
