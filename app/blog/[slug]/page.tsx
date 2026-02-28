@@ -1,71 +1,58 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { collection, query, where, getDocs, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
-export default function BlogPost() {
-  const params = useParams();
-  const slug = params?.slug as string;
+// Required for output: "export" — fetches all blog slugs from Firebase at build time
+export async function generateStaticParams() {
+  try {
+    const snapshot = await getDocs(collection(db, "blogs"));
+    const slugs = snapshot.docs
+      .map((doc) => ({ slug: doc.data().slug as string }))
+      .filter((s) => !!s.slug);
+    return slugs.length > 0 ? slugs : [{ slug: "placeholder" }];
+  } catch (error) {
+    console.error("generateStaticParams error:", error);
+    // Return a placeholder so the build doesn't fail when Firebase is unreachable
+    return [{ slug: "placeholder" }];
+  }
+}
 
-  const [post, setPost] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    if (!slug) return;
-
-    async function fetchPost() {
-      try {
-        const q = query(
-          collection(db, "blogs"),
-          where("slug", "==", slug),
-          limit(1),
-        );
-        const snapshot = await getDocs(q);
-        if (snapshot.empty) {
-          setNotFound(true);
-        } else {
-          setPost(snapshot.docs[0].data());
-        }
-      } catch (error) {
-        console.error("Error fetching blog post:", error);
-        setNotFound(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPost();
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-[#030303] text-white flex items-center justify-center">
-        <Loader2 className="w-10 h-10 text-indigo-400 animate-spin" />
-      </main>
+async function fetchPostBySlug(slug: string) {
+  try {
+    const q = query(
+      collection(db, "blogs"),
+      where("slug", "==", slug),
+      limit(1),
     );
+    const snapshot = await getDocs(q);
+    return snapshot.empty ? null : (snapshot.docs[0].data() as any);
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
+    return null;
+  }
+}
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function BlogPost({ params }: Props) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+
+  // Don't render the placeholder page
+  if (slug === "placeholder") {
+    notFound();
   }
 
-  if (notFound || !post) {
-    return (
-      <main className="min-h-screen bg-[#030303] text-white">
-        <Navbar />
-        <div className="pt-40 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Post Not Found</h1>
-          <Link
-            href="/blog"
-            className="text-indigo-400 hover:text-indigo-300 underline"
-          >
-            ← Back to Blog
-          </Link>
-        </div>
-      </main>
-    );
+  const post = await fetchPostBySlug(slug);
+
+  if (!post) {
+    notFound();
   }
 
   return (
