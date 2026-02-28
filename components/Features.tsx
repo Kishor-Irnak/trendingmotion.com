@@ -9,6 +9,8 @@ import {
   TrendingUp,
   Zap,
   Code2,
+  Share2,
+  Target,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { BlurReveal } from "./ui/blur-reveal";
@@ -291,7 +293,7 @@ const Features: React.FC = () => {
             </div>
           </BlurReveal>
 
-          {/* Card 4: Web Development (Large bottom horizontal) */}
+          {/* Card 4: Web Development */}
           <BlurReveal className="md:col-span-2" delay={0.4}>
             <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-blue-500/30">
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/20 blur-[80px] rounded-full group-hover:bg-indigo-600/30 transition-all" />
@@ -308,9 +310,6 @@ const Features: React.FC = () => {
                     High-performance websites built with React, Next.js, and
                     modern tech stacks. Fast, secure, and conversion-ready.
                   </p>
-                  <button className="mt-6 flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
-                    Explore Our Stack <ArrowUpRight size={14} />
-                  </button>
                 </div>
 
                 {/* Code Snippet Visual */}
@@ -337,6 +336,45 @@ const Features: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </BlurReveal>
+
+          {/* Card 5: Social Media Management */}
+          <BlurReveal delay={0.5}>
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-purple-500/30">
+              <div className="absolute inset-0 bg-linear-to-tr from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                  <Share2 size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Social Media Management
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  We handle the noise while you focus on the business. Strategic
+                  content planning, community engagement, and viral growth
+                  strategies.
+                </p>
+              </div>
+            </div>
+          </BlurReveal>
+
+          {/* Card 6: Performance Marketing */}
+          <BlurReveal delay={0.6}>
+            <div className="group h-full relative overflow-hidden rounded-[2.5rem] bg-[#0F101E] border border-white/10 p-8 transition-all hover:border-emerald-500/30">
+              <div className="absolute inset-0 bg-linear-to-tr from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                  <Target size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Performance Marketing
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Precision targeting to ensure every dollar spent drives
+                  growth. We optimize for conversions, not just clicks.
+                </p>
               </div>
             </div>
           </BlurReveal>

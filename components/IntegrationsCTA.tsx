@@ -366,15 +366,17 @@ export default function IntegrationsCTA() {
               </p>
             </BlurReveal>
             <BlurReveal delay={0.4}>
-              <button className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] active:scale-95 text-sm sm:text-base">
-                <span className="relative z-10 flex items-center gap-2">
-                  Get Started for Free
-                  <ArrowRight
-                    size={18}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </span>
-              </button>
+              <a href="/contact">
+                <button className="group relative inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(255,255,255,0.2)] active:scale-95 text-sm sm:text-base">
+                  <span className="relative z-10 flex items-center gap-2">
+                    Get Started for Free
+                    <ArrowRight
+                      size={18}
+                      className="group-hover:translate-x-1 transition-transform"
+                    />
+                  </span>
+                </button>
+              </a>
             </BlurReveal>
           </div>
         </div>
