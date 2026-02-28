@@ -5,7 +5,6 @@ import LogoTicker from "@/components/LogoTicker";
 import Features from "@/components/Features";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
-import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import IntegrationsCTA from "@/components/IntegrationsCTA";
 import Footer from "@/components/Footer";
@@ -22,8 +21,6 @@ export default function Page() {
         <Features />
         <Process />
         <Testimonials />
-        <Pricing />
-        <FAQ />
         <IntegrationsCTA />
 
         {/* Contact Us Section */}
@@ -35,6 +32,8 @@ export default function Page() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[500px] bg-indigo-900/10 blur-[100px] rounded-full pointer-events-none" />
           <ContactForm />
         </section>
+
+        <FAQ />
 
         <Footer />
       </div>

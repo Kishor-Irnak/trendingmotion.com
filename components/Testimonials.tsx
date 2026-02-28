@@ -5,48 +5,36 @@ const reviews = [
   {
     initials: "JM",
     name: "James Mitchell",
-    role: "Product Manager",
-    company: "NovaTech",
     content:
       "TrendingMotion completely transformed our online presence. The branding is spot-on and conversion rates have doubled since we started.",
   },
   {
     initials: "SL",
     name: "Sara Lopez",
-    role: "UX Designer",
-    company: "Designr Studio",
     content:
       "The attention to detail was incredible. They communicate clearly, deliver on time, and genuinely care about outcomes.",
   },
   {
     initials: "DK",
     name: "Daniel Kim",
-    role: "Marketing Director",
-    company: "GrowthPeak",
     content:
       "An agency that actually delivers. Their SEO strategy put us on the first page of Google in under 3 months — real, measurable growth.",
   },
   {
     initials: "AK",
     name: "Aarav Kapoor",
-    role: "Founder & CEO",
-    company: "LaunchBase",
     content:
       "We went from zero digital presence to 8,000 monthly visitors in four months. The team is sharp, fast, and incredibly data-driven.",
   },
   {
     initials: "NP",
     name: "Nina Patel",
-    role: "Head of Brand",
-    company: "Bloom Co.",
     content:
       "Our Instagram engagement tripled after TrendingMotion took over. The content strategy they built is exactly what our audience needed.",
   },
   {
     initials: "RS",
     name: "Rohan Shah",
-    role: "E-commerce Lead",
-    company: "Shopify Brand",
     content:
       "ROAS went from 1.8x to 5.2x in 6 weeks. Honestly couldn't believe the turnaround. These guys know paid ads inside out.",
   },
@@ -83,7 +71,7 @@ const Testimonials: React.FC = () => {
             </h2>
           </div>
           {/* Rating pill */}
-          <div className="flex-shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/8 bg-white/3 w-fit">
+          <div className="shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/8 bg-white/3 w-fit">
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -142,9 +130,6 @@ const Testimonials: React.FC = () => {
                   <p className="text-white text-sm font-semibold leading-tight">
                     {review.name}
                   </p>
-                  <p className="text-slate-500 text-xs mt-0.5">
-                    {review.role} · {review.company}
-                  </p>
                 </div>
               </div>
             </div>
@@ -156,13 +141,7 @@ const Testimonials: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <BlurReveal delay={0.2} className="mt-8 sm:mt-10 text-center">
           <p className="text-slate-600 text-xs">
-            Join 10+ brands already growing with TrendingMotion.{" "}
-            <a
-              href="#pricing"
-              className="text-slate-400 hover:text-white transition-colors underline underline-offset-2"
-            >
-              See our plans →
-            </a>
+            Join 10+ brands already growing with TrendingMotion.
           </p>
         </BlurReveal>
       </div>

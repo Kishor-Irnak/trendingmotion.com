@@ -43,15 +43,17 @@ const Hero: React.FC = () => {
         {/* Buttons */}
         <BlurReveal delay={0.4}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 sm:mb-14 w-full sm:w-auto">
-            <button className="w-full sm:w-auto group relative px-10 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Get Started for Free{" "}
-                <ChevronRight
-                  size={18}
-                  className="group-hover:translate-x-1.5 transition-transform"
-                />
-              </span>
-            </button>
+            <a href="/contact" className="w-full sm:w-auto">
+              <button className="w-full group relative px-10 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(255,255,255,0.3)] shadow-[0_10px_20px_rgba(0,0,0,0.2)]">
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Get Started for Free{" "}
+                  <ChevronRight
+                    size={18}
+                    className="group-hover:translate-x-1.5 transition-transform"
+                  />
+                </span>
+              </button>
+            </a>
 
             <button className="w-full sm:w-auto px-10 py-4 bg-white/5 text-white hover:bg-white/10 font-bold rounded-full border border-white/10 backdrop-blur-md transition-all flex items-center justify-center gap-2">
               <Play size={18} className="fill-current" /> View Work

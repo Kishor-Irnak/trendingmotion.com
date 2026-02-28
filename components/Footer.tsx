@@ -34,23 +34,40 @@ const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-sm text-slate-500">
               <li>
-                <a href="#" className="hover:text-indigo-400 transition-colors">
+                <a href="/" className="hover:text-indigo-400 transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-400 transition-colors">
-                  About Us
+                <a
+                  href="/#features"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Services
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-400 transition-colors">
-                  Testimonials
+                <a
+                  href="/#process"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Process
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-400 transition-colors">
-                  Pricing
+                <a
+                  href="/blog"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Contact
                 </a>
               </li>
             </ul>
