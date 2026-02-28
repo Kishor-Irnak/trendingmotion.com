@@ -88,8 +88,8 @@ const Testimonials: React.FC = () => {
                 </svg>
               ))}
             </div>
-            <span className="text-xs font-semibold text-white">5.0</span>
-            <span className="text-xs text-slate-500">· 10+ reviews</span>
+            <span className="text-xs font-semibold text-white">4.7</span>
+            <span className="text-xs text-slate-500">· 78+ reviews</span>
           </div>
         </BlurReveal>
       </div>
@@ -141,7 +141,7 @@ const Testimonials: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <BlurReveal delay={0.2} className="mt-8 sm:mt-10 text-center">
           <p className="text-slate-600 text-xs">
-            Join 10+ brands already growing with TrendingMotion.
+            Join 78+ brands already growing with TrendingMotion.
           </p>
         </BlurReveal>
       </div>
