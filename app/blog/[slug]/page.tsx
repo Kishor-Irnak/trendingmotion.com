@@ -1,100 +1,71 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useParams } from "next/navigation";
 import { collection, query, where, getDocs, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
-export const revalidate = 60;
-export const dynamicParams = false;
+export default function BlogPost() {
+  const params = useParams();
+  const slug = params?.slug as string;
 
-async function fetchPostBySlug(slug: string) {
-  try {
-    const q = query(
-      collection(db, "blogs"),
-      where("slug", "==", slug),
-      limit(1),
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    if (!slug) return;
+
+    async function fetchPost() {
+      try {
+        const q = query(
+          collection(db, "blogs"),
+          where("slug", "==", slug),
+          limit(1),
+        );
+        const snapshot = await getDocs(q);
+        if (snapshot.empty) {
+          setNotFound(true);
+        } else {
+          setPost(snapshot.docs[0].data());
+        }
+      } catch (error) {
+        console.error("Error fetching blog post:", error);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-[#030303] text-white flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-indigo-400 animate-spin" />
+      </main>
     );
-    const snapshot = await getDocs(q);
-    return snapshot.empty ? null : (snapshot.docs[0].data() as any);
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
-    return null;
-  }
-}
-
-async function fetchAllSlugs() {
-  try {
-    const q = query(collection(db, "blogs"));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => ({ slug: doc.data().slug }));
-  } catch (error) {
-    console.error("Error fetching all slugs:", error);
-    return [];
-  }
-}
-
-interface Props {
-  params: Promise<{ slug: string }>;
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const post = await fetchPostBySlug(resolvedParams.slug);
-
-  if (!post) {
-    return {
-      title: "Post Not Found",
-    };
   }
 
-  return {
-    title: `${post.title} | TrendingMotion Blog`,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author],
-      url: `https://trendingmotion.com/blog/${post.slug}`,
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  };
-}
-
-export async function generateStaticParams() {
-  const slugs = await fetchAllSlugs();
-  // Next.js static export requires at least one parameter object,
-  // or dynamicParams must be false. However, sometimes it still throws
-  // "missing generateStaticParams()" if the array is completely empty during export.
-  if (!slugs || slugs.length === 0) {
-    return [{ slug: "fallback-empty" }];
-  }
-  return slugs;
-}
-
-export default async function BlogPost({ params }: Props) {
-  const resolvedParams = await params;
-  const post = await fetchPostBySlug(resolvedParams.slug);
-
-  if (!post) {
-    notFound();
+  if (notFound || !post) {
+    return (
+      <main className="min-h-screen bg-[#030303] text-white">
+        <Navbar />
+        <div className="pt-40 text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Post Not Found</h1>
+          <Link
+            href="/blog"
+            className="text-indigo-400 hover:text-indigo-300 underline"
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </main>
+    );
   }
 
   return (
