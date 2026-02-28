@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
             <span className="text-xs font-medium text-indigo-300 tracking-wider">
-              Trusted by 10+ Global Brands
+              Trusted by 78+ Global Brands
             </span>
           </div>
         </BlurReveal>
